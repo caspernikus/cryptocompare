@@ -1,0 +1,16 @@
+{
+  "name": "cryptocompare",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moonrise",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "request": "^2.83.0",
+    "steem": "^0.7.1"
+  }
+}
