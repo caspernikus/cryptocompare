@@ -10,6 +10,8 @@
   "description": "",
   "dependencies": {
     "bootstrap": "^4.0.0",
+    "jsdom": "^11.6.2",
+    "mustache": "^2.3.0",
     "request": "^2.83.0",
     "steem": "^0.7.1"
   }
