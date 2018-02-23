@@ -1,17 +1,39 @@
-<div id="header">Crypto Coin Compare</div>
-<hr>
-<div id="body">
-    <table>
-        <th>Name</th>
-        <th>Price</th>
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/cryptocoins-icons/webfont/cryptocoins.css">
+    <link rel="stylesheet" href="../node_modules/cryptocoins-icons/webfont/cryptocoins-colors.css">
+    <style>
+        i {
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body style="padding: 10px; background: #eae7dc">
+    <h1 class="text-center" style="margin-bottom: 10px">Crypto Coin Compare</h1>
+    <div id="body">
+        <table class="table table-striped">
+            <th>Icon</th>
+            <th>Name</th>
+            <th>Rank</th>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>Change (1h)</th>
+            <th>Change (24h)</th>
+            <th>Change (7d)</th>
 
-        {{#coin_rows}}
-            <tr>
-                <td>{{name}}</td>
-                <td>{{price}}</td>
-            </tr>
-        {{/coin_rows}}
-    </table>
-</div>
-<hr>
-<div id="footer">Auto Generated :O</div>
+            {{#coin_rows}}
+                <tr>
+                    <td><i class="cc {{returnImage}}" title="{{returnImage}}"></i></td>
+                    <td><b>{{name}}</b></td>
+                    <td>{{rank}}</td>
+                    <td>{{symbol}}</td>
+                    <td>$ {{getPrice}}</td>
+                    <td class="{{getColor1h}}">{{percent_change_1h}}</td>
+                    <td class="{{getColor24h}}">{{percent_change_24h}}</td>
+                    <td class="{{getColor7d}}">{{percent_change_7d}}</td>
+                </tr>
+            {{/coin_rows}}
+        </table>
+    </div>
+    <hr>
+</body>
