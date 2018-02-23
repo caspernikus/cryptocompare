@@ -1,6 +1,9 @@
 var fs = require('fs');
 var Mustache = require('Mustache');
 var request = require('request');
+const puppeteer = require('puppeteer');
+
+const config = JSON.parse(fs.readFileSync("config.json"));
 
 getTop10Coins();
 function getTop10Coins() {
@@ -62,5 +65,29 @@ function writeToDisk(content) {
       if (err) throw err;
 
       console.log('Done saving output!');
+      webshotIt(content);
+    });
+}
+
+function webshotIt(content) {
+    (async () => {
+      const browser = await puppeteer.launch();
+      const page = await browser.newPage();
+      page.setViewport({width: 1200, height: 600});
+      await page.goto(config.base + '/out/out.html');
+      await page.screenshot({path: 'out/output.png'});
+
+      await browser.close();
+
+      lbryUpload();
+    })();
+}
+
+function lbryUpload() {
+    const timestamp = Date.now();
+    request.post({url: 'https://spee.ch/api/claim-publish', formData: {name: timestamp + 'output', file: fs.createReadStream('./out/output.png')}}, function (error, response, body) {
+        if (error) throw error;
+
+        console.log("Output: " + JSON.parse(body).message.url);
     });
 }

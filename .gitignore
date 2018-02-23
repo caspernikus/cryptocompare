@@ -1,3 +1,5 @@
 *.afphoto
 wallpaper.png
 node_modules/
+config.json
+out/output.png
